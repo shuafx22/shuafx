@@ -23,9 +23,9 @@
   },
 
   "featured": [
-    { "src": "images/featured1.JPG"},
-    { "src": "images/featured2.jpg", "alt": "Featured photo 2" },
-    { "src": "images/featured3.jpg", "alt": "Featured photo 3" }
+    { "src": "Images/featured1.JPG"},
+    { "src": "Images/featured2.jpg", "alt": "Featured photo 2" },
+    { "src": "Images/featured3.jpg", "alt": "Featured photo 3" }
   ],
 
   "categories": [
