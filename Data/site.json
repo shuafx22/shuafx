@@ -6,7 +6,7 @@
   },
 
   "hero": {
-    "image": "images/hero.jpg",
+    "image": "Images/hero.jpg",
     "alt": "Shua holding his camera"
   },
 
@@ -23,7 +23,7 @@
   },
 
   "featured": [
-    { "src": "images/featured1.jpg", "alt": "Featured photo 1" },
+    { "src": "images/featured1.JPG"},
     { "src": "images/featured2.jpg", "alt": "Featured photo 2" },
     { "src": "images/featured3.jpg", "alt": "Featured photo 3" }
   ],
@@ -39,28 +39,28 @@
   "galleries": [
     {
       "id": "freshman-men-example-game",
-      "title": "Example Game Title",
+      "title": "CCDS vs. Seven Hills",
       "category": "freshman-men",
-      "teams": "CCDS vs. Opponent",
+      "teams": "CCDS vs. Seven Hills",
       "date": "2026-01-15",
-      "description": "A short description of the game or the story behind these photos.",
-      "lightroom": "https://adobe.lightroom.com/shares/PASTE-YOUR-SHARE-LINK-HERE",
-      "cover": "images/games/example/cover.jpg",
+      "description": "CCDS vs. Seven Hills Freshman 2025",
+      "lightroom": "https://lightroom.adobe.com/shares/79ad27c4567f4be586f11bbf1737b7cd",
+      "cover": "Images/theboys.jpg",
       "photos": [
-        { "src": "images/games/example/01.jpg", "caption": "Tip-off" },
-        { "src": "images/games/example/02.jpg", "caption": "Fast break" },
-        { "src": "images/games/example/03.jpg", "caption": "" }
+        { "src": "Images/nkgopr.jpg", "caption": "NK & GO P&R" },
+        { "src": "Images/freethrownk.jpg", "caption": "Free throw NK" },
+        { "src": "Images/aaeerr.jpg", "caption": "TS Possesion" }
       ]
     },
     {
       "id": "varsity-men-example-game",
-      "title": "Another Example Game",
+      "title": "Game",
       "category": "varsity-men",
       "teams": "CCDS vs. Opponent",
-      "date": "2026-02-03",
+      "date": "2026-12-01",
       "description": "",
       "lightroom": "",
-      "cover": "images/games/example2/cover.jpg",
+      "cover": "Images/cover.jpg",
       "photos": []
     }
   ]
