@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gallery | SHUAFX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="mark" href="index.html">SHUAFX</a>
+  <nav><a href="index.html#portfolio">All galleries</a></nav>
+</header>
+
+<main class="band gal">
+  <div id="head"></div>
+  <div id="lr"></div>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer class="band foot">&copy; <span id="yr"></span> SHUAFX. All photographs are copyrighted and may not be used without permission.</footer>
+
+<script src="app.js"></script>
+<script>
+$('#yr').textContent = new Date().getFullYear();
+load().then(d => {
+  const id = new URLSearchParams(location.search).get('id');
+  const g = d.galleries.find(x => x.id === id);
+  const head = $('#head');
+  if (!g) {
+    head.append(h('h1', {}, 'Gallery not found'), h('p', {}, 'Head back to the portfolio and pick a game.'));
+    return;
+  }
+  const cat = d.categories.find(c => c.id === g.category);
+  document.title = g.title + ' | SHUAFX';
+  head.append(
+    h('p', {class: 'meta'}, (cat ? cat.name : '') + ' · ' + fmt(g.date)),
+    h('h1', {}, g.title),
+    h('p', {class: 'meta'}, g.teams),
+    h('p', {class: 'desc'}, g.description || ''));
+
+  /* Lightroom shared albums cannot be embedded in other websites,
+     so we show a preview card that opens the full album. */
+  if (g.lightroom) {
+    $('#lr').append(h('a', {class: 'lr', href: g.lightroom, target: '_blank', rel: 'noopener'},
+      h('div', {class: 'ph'}), img(g.cover, g.title),
+      h('div', {class: 'lr-info'}, h('strong', {}, 'View the full album in Adobe Lightroom'),
+        h('span', {}, 'Opens in a new tab'))));
+  }
+
+  const photos = g.photos || [];
+  photos.forEach((p, n) => $('#grid').append(
+    h('figure', {tabindex: '0', onclick: () => lightbox(photos, n),
+        onkeydown: e => { if (e.key === 'Enter') lightbox(photos, n); }},
+      h('div', {class: 'ph'}), img(p.src, p.caption),
+      p.caption ? h('figcaption', {}, p.caption) : '')));
+});
+</script>
+</body>
+</html>

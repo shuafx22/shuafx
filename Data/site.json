@@ -1,0 +1,67 @@
+{
+  "site": {
+    "tagline": "Sports photographer · CCDS · Cincinnati, Ohio",
+    "email": "shotsbyshua@gmail.com",
+    "instagram": "https://www.instagram.com/shua.fx/"
+  },
+
+  "hero": {
+    "image": "images/hero.jpg",
+    "alt": "Shua holding his camera"
+  },
+
+  "about": {
+    "photo": "images/about.jpg",
+    "alt": "Shua photographing a game",
+    "paragraphs": [
+      "My name is Joshua/Shua, and I'm a 15-year-old sophomore and up-and-coming sports photographer currently shooting for my high school, CCDS.",
+      "I'm passionate about photography and capturing the energy, emotions, and biggest moments in sports. I enjoy being able to tell a story through my photos and give people a different perspective on the games and athletes I photograph.",
+      "As I continue developing my photography skills, I'm also very interested in pursuing a future career in sports marketing, sports media, and videography. My long-term goal is to work with larger organizations, major corporations, and professional sports teams.",
+      "When I'm not photographing games, I'm usually listening to music, lifting, playing video games, talking or hanging out with friends, or exploring a new hobby or passion. I also enjoy learning new things and spending time in my long-running Minecraft world.",
+      "SHUAFX is where I showcase my photography, share my work, and continue building my experience in the sports media industry."
+    ]
+  },
+
+  "featured": [
+    { "src": "images/featured1.jpg", "alt": "Featured photo 1" },
+    { "src": "images/featured2.jpg", "alt": "Featured photo 2" },
+    { "src": "images/featured3.jpg", "alt": "Featured photo 3" }
+  ],
+
+  "categories": [
+    { "id": "freshman-men", "name": "Men's Freshman CCDS Basketball" },
+    { "id": "jv", "name": "JV CCDS Basketball" },
+    { "id": "varsity-men", "name": "Varsity Men's CCDS Basketball" },
+    { "id": "varsity-women", "name": "Varsity Women's CCDS Basketball" },
+    { "id": "nature", "name": "Nature" }
+  ],
+
+  "galleries": [
+    {
+      "id": "freshman-men-example-game",
+      "title": "Example Game Title",
+      "category": "freshman-men",
+      "teams": "CCDS vs. Opponent",
+      "date": "2026-01-15",
+      "description": "A short description of the game or the story behind these photos.",
+      "lightroom": "https://adobe.lightroom.com/shares/PASTE-YOUR-SHARE-LINK-HERE",
+      "cover": "images/games/example/cover.jpg",
+      "photos": [
+        { "src": "images/games/example/01.jpg", "caption": "Tip-off" },
+        { "src": "images/games/example/02.jpg", "caption": "Fast break" },
+        { "src": "images/games/example/03.jpg", "caption": "" }
+      ]
+    },
+    {
+      "id": "varsity-men-example-game",
+      "title": "Another Example Game",
+      "category": "varsity-men",
+      "teams": "CCDS vs. Opponent",
+      "date": "2026-02-03",
+      "description": "",
+      "lightroom": "",
+      "cover": "images/games/example2/cover.jpg",
+      "photos": []
+    }
+  ]
+}

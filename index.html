@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SHUAFX | Sports Photography</title>
+<meta name="description" content="SHUAFX is the sports photography portfolio of Shua, shooting for CCDS in Cincinnati, Ohio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="mark" href="index.html">SHUAFX</a>
+  <nav>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="ph"></div>
+    <div class="hero-text">
+      <p id="tagline"></p>
+      <h1>SHUAFX</h1>
+    </div>
+  </section>
+
+  <section id="featured" class="band" hidden>
+    <div class="strip" id="strip"></div>
+  </section>
+
+  <section id="portfolio" class="band">
+    <h2>Portfolio</h2>
+    <div class="chips" id="chips"></div>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section id="about" class="band about">
+    <div class="about-photo"><div class="ph"></div></div>
+    <div class="about-text">
+      <h2>About me</h2>
+      <div id="about-body"></div>
+    </div>
+  </section>
+
+  <section id="contact" class="band contact">
+    <h2>Contact</h2>
+    <p>Want photos from a game, or have a project in mind? Send me an email.</p>
+    <a class="email" id="email" href="#"></a>
+    <p><a id="insta" href="#" target="_blank" rel="noopener"></a></p>
+  </section>
+</main>
+
+<footer class="band foot">&copy; <span id="yr"></span> SHUAFX. All photographs are copyrighted and may not be used without permission.</footer>
+
+<script src="app.js"></script>
+<script>
+load().then(d => {
+  $('#tagline').textContent = d.site.tagline;
+  heroImage($('#hero .ph'), d.hero.image, d.hero.alt);
+  heroImage($('.about-photo .ph'), d.about.photo, d.about.alt);
+  d.about.paragraphs.forEach(p => $('#about-body').append(h('p', {}, p)));
+
+  const mail = $('#email');
+  mail.href = 'mailto:' + d.site.email; mail.textContent = d.site.email;
+  const ig = $('#insta');
+  ig.href = d.site.instagram; ig.textContent = 'Instagram: ' + d.site.instagram.split('/').filter(Boolean).pop();
+
+  if (d.featured.length) {
+    $('#featured').hidden = false;
+    d.featured.forEach(f => $('#strip').append(h('figure', {}, h('div', {class: 'ph'}), img(f.src, f.alt))));
+  }
+
+  let active = 'all';
+  const chips = $('#chips'), cards = $('#cards');
+  function draw() {
+    chips.replaceChildren(...[{id: 'all', name: 'All'}, ...d.categories].map(c =>
+      h('button', {class: c.id === active ? 'on' : '', onclick: () => { active = c.id; draw(); }}, c.name)));
+    const list = d.galleries.filter(g => active === 'all' || g.category === active)
+      .sort((a, b) => b.date.localeCompare(a.date));
+    cards.replaceChildren(...(list.length ? list.map(g => {
+      const cat = d.categories.find(c => c.id === g.category);
+      return h('a', {class: 'card', href: 'gallery.html?id=' + encodeURIComponent(g.id)},
+        h('div', {class: 'ph'}), img(g.cover, g.title),
+        h('div', {class: 'card-info'},
+          h('span', {}, (cat ? cat.name : '') + ' · ' + fmt(g.date)),
+          h('strong', {}, g.title)));
+    }) : [h('p', {class: 'empty'}, 'No galleries here yet. Check back soon.')]));
+  }
+  draw();
+});
+$('#yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
